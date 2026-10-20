@@ -68,3 +68,21 @@ These tests do not represent a live detection system or prove that the rule has 
 All three scenarios meet their expected outcomes under the documented detection criteria. The manual tests support the logical design of the rule but do not establish operational effectiveness in a live monitoring environment.
 
 **Status:** Manual logic validation completed. Automated and live-system testing remain outstanding.
+
+## 7. Python Test Execution
+
+The detection logic was executed using the Programiz online Python compiler.
+
+**Script:** `detections/test_detection.py`
+
+**Test results:**
+
+| Test | Expected result | Actual result | Status |
+|---|---|---|---|
+| A — Five failures within 10 minutes | Alert | Alert | PASS |
+| B — Four failures within 10 minutes | No alert | No alert | PASS |
+| C — Five failures across 12 minutes | No alert | No alert | PASS |
+
+All three simulated scenarios produced the expected results during execution.
+
+**Limitations:** The script was run against simulated data in an online Python environment. It has not been integrated with Windows Event Viewer, a SIEM, or a live alerting system. The tests validate the implemented logic for these scenarios, not its effectiveness against all possible authentication patterns.
