@@ -1,4 +1,3 @@
-
 # Detection Test Results
 
 ## 1. Test Objective
@@ -10,16 +9,15 @@ The detection threshold is five or more failed logins from the same username and
 ## 2. Test Environment
 
 - Test environment: Isolated Python execution environment
-- Source code: Exact committed GitHub detection script
-- Dataset: Project CSV file containing 25 simulated authentication events
+- Source code: Committed GitHub detection script
+- Dataset: Actual project CSV file containing 25 simulated authentication events
 - Folder structure: Recreated to match the GitHub project
 - Failed login event: Windows Event ID 4625
 - Successful login event: Windows Event ID 4624
 - Threshold: 5 failed attempts
 - Time window: 10 minutes
 
-The committed detection script was retrieved from the public GitHub repository and executed against the retrieved project CSV file in the matching folder structure.
-
+The committed detection script and actual project CSV file were tested together in a recreated folder structure. No changes were made to the GitHub repository during testing.
 
 ## 3. Test Scenarios and Results
 
@@ -36,8 +34,11 @@ The committed detection script was retrieved from the public GitHub repository a
 - Total scenarios tested: 5
 - Passed: 5
 - Failed: 0
+- Detection windows found: 3
+- Medium alerts: 3
+- High alerts: 1
 
-All five scenarios produced the expected results in the Programiz test environment.
+All five scenarios produced the expected results when the detection script was executed against the actual project CSV dataset.
 
 ## 5. Findings
 
@@ -45,20 +46,24 @@ The tests demonstrated that the detection logic:
 
 - Identifies repeated failed logins.
 - Applies the five-attempt threshold.
+- Groups authentication events by username and source IP address.
 - Includes failures occurring exactly at the ten-minute boundary.
 - Excludes attempts outside the ten-minute window.
 - Identifies a successful login occurring after the fifth failed attempt.
-- Avoids repeated alerts for overlapping detection windows.
+
+An additional dataset observation was that the `event_type` column contains both `Failed` and `Failure` labels for failed authentication events. The detection logic identifies failed events using Windows Event ID 4625.
 
 ## 6. Limitations
 
 - The dataset contains simulated authentication events.
-- The tests were conducted in Programiz, not against live Windows security logs.
-- The committed GitHub version still requires execution against the project CSV file.
+- Testing was conducted in an isolated Python environment, not against live Windows security logs.
+- The folder structure was recreated for testing rather than performing a direct Git clone-and-run.
 - A detection alert indicates suspicious activity and does not independently prove account compromise.
 
 ## 7. Conclusion
 
-The five test scenarios passed in the Programiz environment.
+All five detection test scenarios passed.
 
-Further validation is required by executing the committed detection script against the project's CSV dataset.
+The detection script successfully processed the actual 25-record project CSV dataset in the recreated folder structure.
+
+The results demonstrate that the detection logic correctly applies the configured failed-login threshold and 10-minute detection window to the simulated authentication events.
