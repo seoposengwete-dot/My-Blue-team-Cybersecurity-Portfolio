@@ -9,15 +9,17 @@ The detection threshold is five or more failed logins from the same username and
 
 ## 2. Test Environment
 
-- Test environment: Programiz online Python compiler
-- Dataset: Simulated authentication events
-- Detection logic: Python detection script
+- Test environment: Isolated Python execution environment
+- Source code: Exact committed GitHub detection script
+- Dataset: Project CSV file containing 25 simulated authentication events
+- Folder structure: Recreated to match the GitHub project
 - Failed login event: Windows Event ID 4625
 - Successful login event: Windows Event ID 4624
 - Threshold: 5 failed attempts
 - Time window: 10 minutes
 
-The tests were performed using an embedded copy of the simulated dataset. The committed GitHub script was subsequently adapted to read the project CSV file directly.
+The committed detection script was retrieved from the public GitHub repository and executed against the retrieved project CSV file in the matching folder structure.
+
 
 ## 3. Test Scenarios and Results
 
