@@ -64,3 +64,23 @@ All five detection test scenarios passed.
 The detection script successfully processed the actual 25-record project CSV dataset in the recreated folder structure.
 
 The results demonstrate that the detection logic correctly applies the configured failed-login threshold and 10-minute detection window to the simulated authentication events.
+
+## 8. Direct Git Clone-and-Run Validation
+
+The project repository was cloned directly from GitHub onto a Windows laptop using Git.
+
+The detection script was executed locally using the project's actual folder structure and CSV dataset.
+
+**Test Results:**
+
+- Repository cloned successfully from GitHub.
+- Detection script executed locally on Windows.
+- Actual project CSV dataset processed.
+- 3 detection windows identified.
+- 4 alerts generated.
+
+**Validation Outcome:**
+
+The direct clone-and-run test confirmed that the published project could be retrieved from GitHub and executed in the local Windows environment.
+
+This provides additional validation beyond the earlier isolated Python testing.
