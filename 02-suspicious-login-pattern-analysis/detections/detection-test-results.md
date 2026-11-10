@@ -55,10 +55,7 @@ An additional dataset observation was that the `event_type` column contains both
 
 ## 6. Limitations
 
-- The dataset contains simulated authentication events.
-- Testing was conducted in an isolated Python environment, not against live Windows security logs.
-- The folder structure was recreated for testing rather than performing a direct Git clone-and-run.
-- A detection alert indicates suspicious activity and does not independently prove account compromise.
+- The project was cloned directly from GitHub and tested locally on Windows. Validation was performed in the tested environment and does not guarantee identical results on every system.
 
 ## 7. Conclusion
 
